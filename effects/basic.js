@@ -42,7 +42,6 @@ export const fillEffect = color => {
   })
 }
 
-const GL11 = Java.type('org.lwjgl.opengl.GL11');
 
 /**
  * @returns {import('Elementa/index').Effect}

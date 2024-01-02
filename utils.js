@@ -407,8 +407,6 @@ export const isComponentOnScreen = comp => {
 
 const ItemStack = Java.type('net.minecraft.item.ItemStack');
 const MCItem = Java.type('net.minecraft.item.Item');
-const NBTTagCompound = Java.type('net.minecraft.nbt.NBTTagCompound');
-const NBTTagList = Java.type('net.minecraft.nbt.NBTTagList');
 const NBTTagString = Java.type('net.minecraft.nbt.NBTTagString');
 
 /**
