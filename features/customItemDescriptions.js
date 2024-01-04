@@ -4,7 +4,6 @@ import { fixColorEncoding, numToRomanString, onEnterPit, PitReferencePromise } f
 let PitRef = {};
 PitReferencePromise.then(p => PitRef = p);
 
-const NBTTagList = Java.type('net.minecraft.nbt.NBTTagList');
 const NBTTagString = Java.type('net.minecraft.nbt.NBTTagString');
 
 const renderTooltipTrigger = register('itemTooltip', (lore, item) => {
