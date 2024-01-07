@@ -8,6 +8,7 @@ import { ySpacer } from '../utility';
  */
 export const createErrorPageContent = (reason, tab) => {
   tab.setName('Error')
+  ChatLib.chat(reason)
   const root = new Elementa.UIContainer()
     .setHeight(new Elementa.ChildBasedMaxSizeConstraint())
     .setWidth(new Elementa.RelativeConstraint(1))
