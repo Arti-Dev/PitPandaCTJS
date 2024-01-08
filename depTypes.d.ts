@@ -125,10 +125,11 @@ declare module 'Elementa/index'{
   
   interface MasterConstraint implements PositionConstraint, SizeConstraint{}
   
-  interface Effect {
-    beforeDraw(component: UIComponent): void,
-    beforeChildrenDraw(component: UIComponent): void,
-    afterDraw(component: UIComponent): void,
+  abstract class Effect {
+    bindComponent(component: UIComponent): void;
+    beforeDraw(component: UIComponent): void;
+    beforeChildrenDraw(component: UIComponent): void;
+    afterDraw(component: UIComponent): void;
   }
 
   class Window extends UIComponent{};
