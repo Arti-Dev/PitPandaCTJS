@@ -29,8 +29,8 @@ export const createCard = (headerText, comp) => {
   const inner = new Elementa.UIContainer()
     .setWidth(new Elementa.AdditiveConstraint(new Elementa.ChildBasedMaxSizeConstraint(), (4).pixels()))
     .setHeight(new Elementa.AdditiveConstraint(new Elementa.ChildBasedSizeConstraint(), (11).pixels()))
-    .enableEffect(outlineEffect(theColor,2))
-    .enableEffect(beforeDrawEffect(()=>Renderer.drawRect(theColorButForCTJS, inner.getLeft(), inner.getTop()+14, inner.getWidth(), 2)))
+    .enableEffect(new Elementa.OutlineEffect(theColor,2))
+    .enableEffect(new JavaAdapter(Elementa.Effect,beforeDrawEffect(()=>Renderer.drawRect(theColorButForCTJS, inner.getLeft(), inner.getTop()+14, inner.getWidth(), 2))))
     .addChildren([header, contentHolder]);
   return createPadding(inner, 4);
 }
@@ -49,7 +49,7 @@ export const createHeadlessCard = comp => {
   const inner = new Elementa.UIContainer()
     .setWidth(new Elementa.AdditiveConstraint(new Elementa.ChildBasedSizeConstraint(), (4).pixels()))
     .setHeight(new Elementa.AdditiveConstraint(new Elementa.ChildBasedSizeConstraint(), (4).pixels()))
-    .enableEffect(outlineEffect(theColor,2))
+    .enableEffect(new Elementa.OutlineEffect(theColor,2))
     .addChild(contentHolder);
   return createPadding(inner, 4);
 }
@@ -92,8 +92,8 @@ export const tabbedCard = (tabs, widthConstraint) => {
   const inner = new Elementa.UIContainer()
     .setWidth(new Elementa.AdditiveConstraint(widthConstraint, (4).pixels()))
     .setHeight(new Elementa.AdditiveConstraint(new Elementa.ChildBasedSizeConstraint(), (20).pixels()))
-    .enableEffect(outlineEffect(theColor,2))
-    .enableEffect(beforeDrawEffect(()=>Renderer.drawRect(theColorButForCTJS, inner.getLeft(), inner.getTop()+14, inner.getWidth(), 2)))
+    .enableEffect(new Elementa.OutlineEffect(theColor,2))
+    .enableEffect(new JavaAdapter(Elementa.Effect,beforeDrawEffect(()=>Renderer.drawRect(theColorButForCTJS, inner.getLeft(), inner.getTop()+14, inner.getWidth(), 2))))
     .addChildren([header, contentHolder]);
   return createPadding(inner, 4);
 }

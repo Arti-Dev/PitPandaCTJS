@@ -118,11 +118,11 @@ export const createHomePageContent = (tab, data) => {
       new Elementa.UIContainer()
         .addChildren([
           input.component
-            .enableEffect(outlineEffect(white, 1))
+            .enableEffect(new Elementa.OutlineEffect(white, 1))
             .setWidth((150).pixels())
             .setHeight((20).pixels()),
           new Elementa.UIBlock(theColor)
-            .enableEffect(outlineEffect(white, 1))
+            .enableEffect(new Elementa.OutlineEffect(white, 1))
             .setWidth((30).pixels())
             .setHeight((20).pixels())
             .setX(

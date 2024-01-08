@@ -22,7 +22,7 @@ export const createScrollable = (comp, eventLinker) => {
     .setWidth(new Elementa.RelativeConstraint(1))
     .setHeight(new Elementa.RelativeConstraint(1))
     .enableEffects([
-      beforeDrawEffect(() => {
+      new JavaAdapter(Elementa.Effect, beforeDrawEffect(() => {
         if(isEnabled()) {
           comp.setY((-1*(scrollPos/maxScrollPos()*scaledMaxScroll())).pixels())
           scrollBar.setY(scrollPos.pixels())
@@ -33,17 +33,17 @@ export const createScrollable = (comp, eventLinker) => {
           scrollPos = 0
           comp.setY((0).pixels())
         }
-      }),
+      })),
       new Elementa.ScissorEffect()
     ])
     .addChild(comp)
   const scrollBar = new Elementa.UIBlock(new Color(.9,.9,.9,.7))
     .setWidth((6).pixels())
     .setHeight((0).pixels())
-    .enableEffect(beforeDrawEffect(() => {
+    .enableEffect(new JavaAdapter(Elementa.Effect, beforeDrawEffect(() => {
       scrollBar.setX(root.getRight().pixels());
       scrollBar.setY(scrollPos.pixels());
-    }))
+    })))
   floatingWindow.addChild(scrollBar);
   const changeScroll = delta => {
     scrollPos += delta;
