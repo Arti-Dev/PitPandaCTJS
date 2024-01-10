@@ -8,7 +8,9 @@ export class ToggleEffect {
   constructor(effect){
     this.effect = effect;
     this.enabled = true;
+    this.boundComponent = undefined;
   }
+
 
   /**
    * @param {boolean} state 
@@ -53,4 +55,14 @@ export class ToggleEffect {
     if(!this.enabled) return;
     this.effect.afterDraw(comp);
   }
+
+  /**
+   * @param {Elementa.UIComponent} comp 
+   */
+  bindComponent(comp) {
+    this.effect.bindComponent(comp);
+    this.boundComponent = comp;
+  }
+
+  
 }

@@ -5,9 +5,13 @@ import * as Elementa from 'Elementa/index';
  * @type {Elementa.Effect}
  */
 export const emptyEffect = {
+  boundComponent: undefined,
   beforeDraw: noop,
   beforeChildrenDraw: noop,
   afterDraw: noop,
+  bindComponent(comp) {
+    this.boundComponent = comp
+  },
 }
 
 /**
