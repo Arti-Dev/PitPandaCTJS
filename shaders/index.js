@@ -1,4 +1,3 @@
-const GL20 = Java.type('org.lwjgl.opengl.GL20');
 import { ModuleDir } from '../constants';
 
 export const shaders = {
