@@ -30,7 +30,19 @@ export const createBasicTab = (tab, options) => {
     .onMouseEnter(() => exitButton.clearChildren().addChild(new Elementa.UIText('§cX')))
     .onMouseLeave(() => exitButton.clearChildren().addChild(new Elementa.UIText('§7X')))
 
-  const bgEff = new MetaEffect(backgroundEffect(theColor));
+  const bgEff = new JavaAdapter(Elementa.Effect, MetaEffect(backgroundEffect(theColor)));
+  // const bgEff = new JavaAdapter(Elementa.Effect, new MetaEffect({
+  //   boundComponent: undefined,
+  //   beforeDrawEffect(UMatrixStack) {
+  //     Renderer.drawRect(Renderer.color(theColor.red,theColor.green,theColor.blue,theColor.alpha), this.boundComponent.getLeft(), this.boundComponent.getTop(), 
+  //     this.boundComponent.getWidth(), this.boundComponent.getHeight())
+  //   },
+  //   beforeDraw: noop,
+  //   afterDraw: noop,
+  //   bindComponent(comp) {
+  //     this.boundComponent = comp
+  //   },
+  // }))
 
   let tabComponent = new Elementa.UIContainer()
     .enableEffect(bgEff)
@@ -41,7 +53,7 @@ export const createBasicTab = (tab, options) => {
         (12).pixels(),
       )
     )
-    .enableEffect(outlineEffect(white ,1))
+    .enableEffect(new JavaAdapter(Elementa.Effect, outlineEffect(white ,1)))
     .addChildren([
       genNameComp(),
       exitButton,

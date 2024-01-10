@@ -2,6 +2,7 @@ import * as Elementa from 'Elementa/index';
 import { theColor } from '../../constants';
 import { fillEffect, MetaEffect } from '../../effects';
 import { noop, registerOnce } from '../../utils';
+import { colorToLong } from '../../utils';
 
 const Color = Java.type('java.awt.Color');
 
@@ -42,7 +43,16 @@ const defaults = {
  */
 export const createInput = (opts = {}) => {
   const options = {...defaults, ...opts};
-  const backgroundEffect = new MetaEffect(fillEffect(options.focusBackgroundColor));
+  // TODO: The backgroundEffect const has been changed to a regular Elementa.Effect instead of a MetaEffect. This might have consequences!
+  // const backgroundEffect = new JavaAdapter(Elementa.Effect, new MetaEffect(fillEffect(options.focusBackgroundColor)));
+  const backgroundEffect = new JavaAdapter(Elementa.Effect, {
+    beforeChildrenDraw(u) {
+      Renderer.drawRect(colorToLong(new Color(0,0.7,0,0.4)), this.boundComponent.getLeft(), this.boundComponent.getTop(), this.boundComponent.getWidth(), 
+      this.boundComponent.getHeight());
+    },
+    beforeDraw: noop,
+    afterDraw: noop
+  })
   const component = new Elementa.UIContainer()
     .enableEffect(backgroundEffect);
   const [getState, setState] = (()=>{
@@ -75,7 +85,7 @@ export const createInput = (opts = {}) => {
       value => {
         if(cleanupPrev) cleanupPrev();
         if(value) cleanupPrev = prepListener(browser.gui);
-        backgroundEffect.setEnabled(value);
+        // backgroundEffect.setEnabled(value);
         focus = value;
         return value;
       },
