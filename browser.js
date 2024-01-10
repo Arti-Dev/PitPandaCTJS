@@ -301,6 +301,7 @@ export const browser = {
             if(!that.isOpen || that.activeTab[1] !== this) return;
             const reason = 'error' in error ? error.error : error.toString();
             console.log(error);
+            ChatLib.chat(error.stack)
             asyncRoot
               .clearChildren()
               .addChild(createErrorPage(reason).renderer(this));
