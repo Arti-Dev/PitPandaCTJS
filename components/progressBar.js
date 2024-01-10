@@ -77,11 +77,11 @@ export const createProgressBar = (data, name, id, color) => {
   new Elementa.UIContainer()
     .setWidth(new Elementa.RelativeConstraint(1))
     .setHeight(new Elementa.RelativeConstraint(1))
-    .enableEffect(beforeChildrenDrawEffect(comp => {
+    .enableEffect(new JavaAdapter(Elementa.Effect, beforeChildrenDrawEffect(comp => {
       Renderer.drawRect(
         longColor,
         comp.getLeft(), comp.getTop(),
         comp.getWidth() * Math.min(data.percent, 1), comp.getHeight(),
       )
-    }))
+    })))
 ]
