@@ -17,7 +17,6 @@ let createProfile;
 setTimeout(() => {
   browser = require('./browser').browser;
   createProfile = require('./components/pages/profile').createProfilePage;
-  ChatLib.chat("setTimeOut() was called")
 }, 2);
 
 /**
