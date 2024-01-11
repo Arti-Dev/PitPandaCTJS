@@ -74,6 +74,7 @@ export const formatPlaytime = time => {
  */
 export const sentenceCase = str => str.charAt(0).toUpperCase() + str.substring(1);
 
+// todo fix
 export const onGuiClose = (() => {
   /**
    * @type {[() => void, Gui][]}
@@ -83,6 +84,7 @@ export const onGuiClose = (() => {
   register('guiOpened', _ => {
     const current = Client.currentGui.get();
     waiting = waiting.filter(([cb, gui]) => {
+      // console.log("gui: ", gui, "last: ", last, gui !== last)
       if(gui !== last) return true
       cb();
       return false;
@@ -290,10 +292,10 @@ export const onEnterPit = (()=>{
 })();
 
 /**
- * @returns {Promise<'The Pit Genesis' | 'The Pit Seasons' | 'The Pit' | 'The Pit Abyss' | 'The Pit Castle'>}
+ * @returns {Promise<'Genesis' | 'Four Seasons' | 'Elements' | 'Abyss' | 'Castle'>}
  */
 const getMapHelper = () => new Promise((resolve, reject) => {
-  const validMaps = ['The Pit Genesis', 'The Pit Seasons', 'The Pit', 'The Pit Abyss', 'The Pit Castle'];
+  const validMaps = ['Genesis', 'Four Seasons', 'Elements', 'Abyss', 'Castle'];
   let timedout = false;
   setTimeout(() => {
     timedout = true;
