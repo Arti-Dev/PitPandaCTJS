@@ -136,9 +136,7 @@ export const createHomePageContent = (tab, data) => {
                 .setX(new Elementa.CenterConstraint())
                 .setY(new Elementa.CenterConstraint())
             ).onMouseClick(() => {
-              ChatLib.chat("Trying to open profile")
               openProfile(input.getState())
-              ChatLib.chat("Opened profile")
             })
         ])
         .setWidth(new Elementa.ChildBasedSizeConstraint())
