@@ -38,8 +38,8 @@ onEnterPit(() => {
   if(getSetting('SimpleMysticDescription')) renderTooltipTrigger.register();
 
   const subscription = subscribeToSetting('SimpleMysticDescription', state => {
-    if(state) renderTooltipTrigger.unregister();
-    else renderTooltipTrigger.register();
+    if(state) renderTooltipTrigger.register();
+    else renderTooltipTrigger.unregister();
   });
 
   return () => {
